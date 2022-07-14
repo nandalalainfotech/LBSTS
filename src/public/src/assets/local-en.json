@@ -1,0 +1,8 @@
+{
+    "success": "Done",
+    "submittedSuccessfully": "Submitted Successfully",
+    "AddoperationsuccessfullyMessage": "New record has been successfully added",
+    "UpdateoperationsuccessfullyMessage": "Record has been successfully updated",
+    "DeleteoperationsuccessfullyMessage": "Record has been successfully deleted",
+    "error": "Error"
+}
