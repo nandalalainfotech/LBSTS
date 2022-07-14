@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
-      "analytics": "ae4e65e7-9ec9-424b-9155-ee975141c520"
+        "analytics": "ae4e65e7-9ec9-424b-9155-ee975141c520"
     },
     "version": 1,
     "newProjectRoot": "projects",
@@ -25,7 +25,7 @@
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
-                        "aot": false,
+                        "aot": true,
                         "assets": [
                             "src/assets",
                             "src/favicon.ico",
@@ -38,7 +38,12 @@
                             "node_modules/prismjs/prism.js",
                             "node_modules/prismjs/components/prism-typescript.js"
                         ],
-                        "allowedCommonJsDependencies": ["@fullcalendar/daygrid","@fullcalendar/timegrid","@fullcalendar/interaction","chart.js"]
+                        "allowedCommonJsDependencies": [
+                            "@fullcalendar/daygrid",
+                            "@fullcalendar/timegrid",
+                            "@fullcalendar/interaction",
+                            "chart.js"
+                        ]
                     },
                     "configurations": {
                         "production": {
