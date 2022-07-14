@@ -8,13 +8,13 @@ import { MessageService } from 'primeng/api';
 @Injectable()
 export class ApiHelperService {
   baseUrl = environment.serviceUrl;
-  BaseUrl=environment.serviceUrl1;
+  // BaseUrl=environment.serviceUrl1;
   
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
   get<TResponse>(uri: string, params = new HttpParams(), headers = new HttpHeaders()): Observable<TResponse> {
     console.log("get",uri); 
-    return this.http.get<TResponse>(this.BaseUrl + uri, { headers, params }).pipe(catchError(this.handleError.bind(this)));
+    return this.http.get<TResponse>(this.baseUrl + uri, { headers, params }).pipe(catchError(this.handleError.bind(this)));
   }
 
   post<TData, TResponse>(uri: string, data: TData, options = {}): Observable<TResponse> {
