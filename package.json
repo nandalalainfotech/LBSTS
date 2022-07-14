@@ -56,7 +56,8 @@
     "tedious": "^11.0.9",
     "ts-node": "^10.0.0",
     "@angular-builders/custom-webpack":"12.0.0-beta.0",
-    "babel-loader":"8.2.5"
+    "babel-loader":"8.2.5",
+    "node-pre-gyp": "0.17.0"
     
   },
   "devDependencies": {
