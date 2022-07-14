@@ -61,6 +61,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "~11.0.0",
+    "@angular/cli": "~11.0.0",
     "@types/express": "^4.17.12",
     "@types/mocha": "^9.0.0",
     "@types/mongoose": "^5.11.97",
