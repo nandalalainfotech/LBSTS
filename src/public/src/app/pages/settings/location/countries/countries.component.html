@@ -1,0 +1,149 @@
+<div class="p-grid">
+  <div class="p-col-12">
+
+      <p-toast></p-toast>
+
+      <div class="card">
+          <p-toolbar styleClass="p-mb-4">
+              <ng-template pTemplate="left">
+                  <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                  <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteSelectedProducts()" [disabled]="!selectedCountries || !selectedCountries.length"></button>
+              </ng-template>
+
+              <ng-template pTemplate="right">
+                  <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-mb-2 p-d-inline-block"></p-fileUpload>
+                  <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+              </ng-template>
+          </p-toolbar>
+
+          <p-table #dt [value]="countries" [columns]="cols" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+                   [(selection)]="selectedCountries" [rowHover]="true" dataKey="id"
+                   styleClass="p-datatable-customers"
+                   currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+              <ng-template pTemplate="caption">
+                  <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                      <h5 class="p-m-0">Countries</h5>
+                      <span class="p-input-icon-left">
+                      <i class="pi pi-search"></i>
+                      <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                  </span>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th style="width: 3rem">
+                          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                      </th>
+                      <th pSortableColumn="Id"># <p-sortIcon field="Id"></p-sortIcon></th>
+                      <th>Image</th>
+                      <th pSortableColumn="NameEn">Name <p-sortIcon field="NameEn"></p-sortIcon></th>
+                      <th pSortableColumn="NameAr">Arabic <p-sortIcon field="NameAr"></p-sortIcon></th>
+                      <th pSortableColumn="Phonecode">Phone Code <p-sortIcon field="Phonecode"></p-sortIcon></th>
+                      <th pSortableColumn="Timezone">Time Zone <p-sortIcon field="Timezone"></p-sortIcon></th>
+                      <th pSortableColumn="Status">Status <p-sortIcon field="Status"></p-sortIcon></th>
+                      <th></th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-country>
+                  <tr>
+                      <td>
+                          <p-tableCheckbox [value]="country"></p-tableCheckbox>
+                      </td>
+                      <td><span class="p-column-title"></span>
+                        {{country.Id}}
+                      </td>
+                      <td>
+                          <img [src]="'assets/demo/images/product/' + country.Image" [alt]="country.Image" width="100" class="p-shadow-4" />
+                      </td>
+                      <td>
+                        {{country.NameEn}}
+                    </td>
+                      <td>
+                          {{country.NameAr}}
+                      </td>
+                      <td>
+                          {{country.Phonecode}}
+                      </td>
+                      <td>
+                        {{country.Timezone}}
+                      </td>
+                      <td>
+                        <p-inputSwitch [ngModel]="country.Status" ></p-inputSwitch>
+                      </td>
+                      <td>
+                          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editProduct(country)"></button>
+                          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(country)"></button>
+                      </td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+                  <div class="p-d-flex p-ai-center p-jc-between">
+                      In total there are {{countries ? countries.length : 0 }} country.
+                  </div>
+              </ng-template>
+          </p-table>
+      </div>
+
+      <p-dialog [(visible)]="countryDialog" [style]="{width: '1000px'}" header="Create Country" [modal]="true" styleClass="p-fluid">
+          <ng-template pTemplate="content">
+              <img [src]="'assets/demo/images/product/' + country.Image" [alt]="country.Image" class="product-image" *ngIf="country.Image">
+              <div class="p-field">
+                  <label for="name">Country name</label>
+                  <input type="text" pInputText id="name" [(ngModel)]="country.NameEn" required autofocus />
+                  <small class="p-invalid" *ngIf="submitted && !country.NameEn">Country name is required.</small>
+              </div>
+              <div class="p-field">
+                <div class="p-formgrid p-grid">
+                  <div class="p-field-radiobutton p-col-2">
+                    <label for="price">Arablic name</label>
+                  </div>
+                  <div class="p-field-radiobutton p-col-4">
+                    <input type="text" pInputText id="price" [(ngModel)]="country.NameAr" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !country.NameAr">Arablic name is required.</small>
+                  </div>
+                  <div class="p-field-radiobutton p-col-2">
+                    <label for="Phonecode">Country code</label>
+                  </div>
+                  <div class="p-field-radiobutton p-col-4">
+                    <input type="text" pInputText id="Phonecode" [(ngModel)]="country.Phonecode" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !country.Phonecode">Phone Code is required.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="p-field">
+                <div class="p-formgrid p-grid">
+                  <div class="p-field-radiobutton p-col-2">
+                    <label for="Phonecode">Country phone code</label>
+                  </div>
+                  <div class="p-field-radiobutton p-col-4">
+                    <input type="text" pInputText id="Phonecode" [(ngModel)]="country.Phonecode" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !country.Phonecode">Phone Code is required.</small>
+                  </div>
+                  <div class="p-field-radiobutton p-col-2">
+                    <label for="price">Time zone</label>
+                  </div>
+                  <div class="p-field-radiobutton p-col-4">
+                    <input type="text" pInputText id="Timezone" [(ngModel)]="country.Timezone" required autofocus />
+                    <small class="p-invalid" *ngIf="submitted && !country.Timezone">Time is required.</small>
+                  </div>
+                </div>
+              </div>
+              <div class="p-field">
+                <div class="p-formgrid p-grid">
+                  <div class="p-field-radiobutton p-col-6">
+                    <label for="description">Description</label>
+                    <textarea id="description" pInputTextarea [(ngModel)]="country.description" required rows="3" cols="20"></textarea>
+                  </div>
+                </div>
+              </div>
+          </ng-template>
+
+          <ng-template pTemplate="footer">
+              <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+              <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+          </ng-template>
+      </p-dialog>
+
+      <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+  </div>
+</div>

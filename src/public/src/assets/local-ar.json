@@ -1,0 +1,8 @@
+{
+    "success": "تمت",
+    "submittedSuccessfully": "تمت العملية بنجاح",
+    "AddoperationsuccessfullyMessage": "تمت إضافة سجل جديد بنجاح",
+    "UpdateoperationsuccessfullyMessage": "تم تعديل السجل  بنجاح",
+    "DeleteoperationsuccessfullyMessage": "تم حذف السجل  بنجاح",
+    "error": "خطأ"
+}

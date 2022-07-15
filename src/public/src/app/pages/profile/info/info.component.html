@@ -1,0 +1,45 @@
+<div class="p-fluid">
+  <div class="card">
+    <h3>User Infosdfsdf</h3>
+    <!-- username -->
+    <div class="p-field">
+      <label for="username">User Name:</label>
+      <input
+        id="username"
+        type="text"
+        pInputText
+        [(ngModel)]="user.Username"
+        (input)="onChange()"
+        [ngClass]="wrongUsername ? 'ng-dirty ng-invalid' : ''"
+      />
+    </div>
+    <!-- mobile -->
+    <div class="p-field">
+      <label for="phone">User Phone:</label>
+      <input
+        id="phone"
+        type="text"
+        pInputText
+        [(ngModel)]="user.Phone"
+        (input)="onChange()"
+        [ngClass]="wrongPhone ? 'ng-dirty ng-invalid' : ''"
+      />
+    </div>
+    <!-- email -->
+    <div class="p-field">
+      <label for="email">User Email:</label>
+      <input
+        id="email"
+        type="text"
+        pInputText
+        [(ngModel)]="user.Email"
+        (input)="onChange()"
+        [ngClass]="wrongEmail ? 'ng-dirty ng-invalid' : ''"
+      />
+    </div>
+
+    <div class="p-field">
+      <button pButton pRipple type="button" [disabled]="!allowInfoSubmit" label="Save" class="p-mr-2 p-mb-2" (click)="submit()"></button>
+    </div>
+  </div>
+</div>

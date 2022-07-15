@@ -1,27 +1,24 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MediaObserver, MediaChange } from '@angular/flex-layout'
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'login';
-  devicsXs: boolean = false;
-  mediaSub!: Subscription;
-  constructor(public MediaObserver: MediaObserver) { }
-  ngOnInit() {
-    this.mediaSub = this.MediaObserver.media$.subscribe(
-      (result: MediaChange) => {
-        this.devicsXs = result.mqAlias === 'xs' ? true : false;
-      }
-    )
-  }
-  
-  ngOnDestroy() {
-    this.mediaSub.unsubscribe()
-  }
+export class AppComponent {
+    menuMode = 'static';
 
+    lightMenu = false;
+
+    inputStyle = 'outlined';
+
+    ripple: boolean;
+
+    constructor(private primengConfig: PrimeNGConfig) {
+    }
+
+    ngOnInit() {
+        this.primengConfig.ripple = true;
+        this.ripple = true;
+    }
 }

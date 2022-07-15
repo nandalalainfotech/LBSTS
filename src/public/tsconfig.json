@@ -1,33 +1,22 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-   
-    
-  },
-  
-  "angularCompilerOptions": {
-    "strictInjectionParameters": false,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "types" : ["node"]
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es2018", "dom"],
+    "types": ["node"],
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@app/*": ["app/*"],
+      "@app-assets/*": ["app/assets/*"]
+    }
   }
 }
