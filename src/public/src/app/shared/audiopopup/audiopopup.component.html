@@ -1,0 +1,6 @@
+<app-popup [title]="title" [showAccept]="true" acceptLabel="Accept" [showCancel]="true" [widthArg]="400" [heightArg]="400" (acceptClick)="onAcceptClick()" (cancelClick)="onCloseClick()">
+    <div class="row">
+        <audio [src]="sources" controls autoplay class="col-sm-12 col-md-12">
+          </audio> 
+    </div>
+</app-popup>

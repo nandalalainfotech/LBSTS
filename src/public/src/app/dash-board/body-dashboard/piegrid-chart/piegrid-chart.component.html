@@ -1,0 +1,18 @@
+<div class="card">
+    <span class="grid">Matches Overview List</span>
+    <!-- <ngx-charts-pie-grid [view]="[1100, 220]" [results]="single" (select)="onSelect($event)">
+    </ngx-charts-pie-grid> -->
+    <circle-progress
+  class="smooth"
+  [percent]="percent"
+  [animation]="true"
+  [animationDuration]="500"
+  [outerStrokeWidth]="15"
+  [outerStrokeColor]="percentToColor(percent, 100, 0)"
+  [innerStrokeWidth]="15"
+  [innerStrokeColor]="'#dddddd'"
+  [space]="-15"
+  [startFromZero]="false"
+>
+</circle-progress>
+</div>
