@@ -17,7 +17,7 @@ export default class App {
     this.app.get('/', (req, res) => {
       res.sendFile('index.html', { root: `${__dirname}/public/dist/omega` });
     });
-    this.routes([new UserRoute(), new LookupRoute()]);
+    // this.routes([new UserRoute(), new LookupRoute()]);
   }
 
   public listen() {
@@ -51,13 +51,13 @@ export default class App {
     });
   }
 
-  private routes(routes: BaseRoute[]) {
-    routes.forEach((route) => {
-      this.app.use(`/${route.baseUrl}`, route.router);
-    });
-  }
+  // private routes(routes: BaseRoute[]) {
+  //   routes.forEach((route) => {
+  //     this.app.use(`/${route.baseUrl}`, route.router);
+  //   });
+  // }
 
   private async connectTOSQLDB(): Promise<void> {
-    await BaseRepository.initDB();
+    // await BaseRepository.initDB();
   }
 }
